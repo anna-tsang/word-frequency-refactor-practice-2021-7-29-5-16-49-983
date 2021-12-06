@@ -17,24 +17,7 @@ public class WordFrequencyGame {
         } else {
 
             try {
-                //split the input string with 1 to n pieces of spaces
-                String[] inputWordsSplitList = inputWords.split(SPACE_PATTERN);
-
-                List<WordsInfo> inputWordsList = new ArrayList<>();
-                for (String inputWord : inputWordsSplitList) {
-                    WordsInfo word = new WordsInfo(inputWord, 1);
-                    inputWordsList.add(word);
-                }
-
-                //get the map for the next step of sizing the same word
-                Map<String, List<WordsInfo>> map = getListMap(inputWordsList);
-
-                List<WordsInfo> list = new ArrayList<>();
-                for (Map.Entry<String, List<WordsInfo>> entry : map.entrySet()) {
-                    WordsInfo input = new WordsInfo(entry.getKey(), entry.getValue().size());
-                    list.add(input);
-                }
-                inputWordsList = list;
+                List<WordsInfo> inputWordsList = calculateWordFrequency(inputWords);
 
                 inputWordsList.sort((w1, w2) -> w2.getWordCount() - w1.getWordCount());
 
@@ -50,6 +33,28 @@ public class WordFrequencyGame {
                 return "Calculate Error";
             }
         }
+    }
+
+    private List<WordsInfo> calculateWordFrequency(String inputWords) {
+        //split the input string with 1 to n pieces of spaces
+        String[] inputWordsSplitList = inputWords.split(SPACE_PATTERN);
+
+        List<WordsInfo> inputWordsList = new ArrayList<>();
+        for (String inputWord : inputWordsSplitList) {
+            WordsInfo word = new WordsInfo(inputWord, 1);
+            inputWordsList.add(word);
+        }
+
+        //get the map for the next step of sizing the same word
+        Map<String, List<WordsInfo>> map = getListMap(inputWordsList);
+
+        List<WordsInfo> list = new ArrayList<>();
+        for (Map.Entry<String, List<WordsInfo>> entry : map.entrySet()) {
+            WordsInfo input = new WordsInfo(entry.getKey(), entry.getValue().size());
+            list.add(input);
+        }
+        inputWordsList = list;
+        return inputWordsList;
     }
 
 
