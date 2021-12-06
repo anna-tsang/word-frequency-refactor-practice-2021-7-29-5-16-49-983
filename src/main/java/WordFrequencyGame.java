@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.StringJoiner;
 import java.util.stream.Collectors;
@@ -14,6 +15,7 @@ public class WordFrequencyGame {
         try {
             List<WordsInfo> inputWordsList = calculateWordFrequency(inputWords);
             inputWordsList.sort((w1, w2) -> w2.getFrequency() - w1.getFrequency());
+            //inputWordsList.stream().sorted((Comparator.comparing(WordsInfo::getFrequency)));
             return getString(inputWordsList);
         } catch (Exception e) {
             return "Calculate Error";
