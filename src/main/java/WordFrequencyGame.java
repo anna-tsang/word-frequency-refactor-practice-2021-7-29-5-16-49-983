@@ -1,8 +1,10 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
+import java.util.stream.Collectors;
 
 // i. naming 2. magic string 3. temp var 4. for loop 5. long method 6. if/else
 public class WordFrequencyGame {
@@ -34,27 +36,16 @@ public class WordFrequencyGame {
             }
         }
     }
-
-    private List<WordsInfo> calculateWordFrequency(String inputWords) {
-        //split the input string with 1 to n pieces of spaces
-        String[] inputWordsSplitList = inputWords.split(SPACE_PATTERN);
-
-        List<WordsInfo> inputWordsList = new ArrayList<>();
-        for (String inputWord : inputWordsSplitList) {
-            WordsInfo word = new WordsInfo(inputWord, 1);
-            inputWordsList.add(word);
-        }
-
-        //get the map for the next step of sizing the same word
-        Map<String, List<WordsInfo>> map = getListMap(inputWordsList);
-
-        List<WordsInfo> list = new ArrayList<>();
-        for (Map.Entry<String, List<WordsInfo>> entry : map.entrySet()) {
-            WordsInfo input = new WordsInfo(entry.getKey(), entry.getValue().size());
-            list.add(input);
-        }
-        inputWordsList = list;
-        return inputWordsList;
+    private List<WordsInfo> calculateWordFrequency(String sentences){
+        List<String> words = Arrays.asList(sentences.split(SPACE_PATTERN));
+        List<String> distinctWords = words.stream().distinct().collect(Collectors.toList());
+        List<WordsInfo> wordInfos = new ArrayList<>();
+        distinctWords.forEach(distinctWord ->{
+            int frequency = (int) words.stream().filter(word -> word.equals((distinctWord))).count();
+            WordsInfo wordInfo = new WordsInfo(distinctWord, frequency);
+            wordInfos.add(wordInfo);
+        });
+        return wordInfos;
     }
 
 
