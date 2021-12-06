@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
-// i. naming 2. magic string  4. for loop 5. long method 6. if/else
 public class WordFrequencyGame {
 
     public static final String SPACE_PATTERN = "\\s+";
