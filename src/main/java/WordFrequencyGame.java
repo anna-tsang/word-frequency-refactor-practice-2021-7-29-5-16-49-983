@@ -18,11 +18,11 @@ public class WordFrequencyGame {
 
             try {
                 //split the input string with 1 to n pieces of spaces
-                String[] words = inputWords.split(SPACE_PATTERN);
+                String[] inputWordsSplit = inputWords.split(SPACE_PATTERN);
 
                 List<WordsInfo> inputWordsList = new ArrayList<>();
-                for (String word : words) {
-                    WordsInfo input = new WordsInfo(word, 1);
+                for (String inputWord : inputWordsSplit) {
+                    WordsInfo input = new WordsInfo(inputWord, 1);
                     inputWordsList.add(input);
                 }
 
