@@ -6,19 +6,22 @@ import java.util.StringJoiner;
 import java.io.CharArrayWriter;
 
 import java.time.LocalDateTime;
-
+// i. naming 2. magic string 3. temp var 4. for loop 5. long method 6. if/else
 public class WordFrequencyGame {
+
+    public static final String SPACE_PATTERN = "\\s+";
+
     public String getResult(String inputStr){
 
 
-        if (inputStr.split("\\s+").length==1) {
+        if (inputStr.split(SPACE_PATTERN).length==1) {
             return inputStr + " 1";
         } else {
 
             try {
 
                 //split the input string with 1 to n pieces of spaces
-                String[] arr = inputStr.split("\\s+");
+                String[] arr = inputStr.split(SPACE_PATTERN);
 
                 List<Input> inputList = new ArrayList<>();
                 for (String s : arr) {
