@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
@@ -37,7 +35,7 @@ public class WordFrequencyGame {
     private String getString(List<WordsInfo> wordInfoList) {
         StringJoiner joiner = new StringJoiner("\n");
         for (WordsInfo wordInfo : wordInfoList) {
-            String s = wordInfo.getValue() + " " + wordInfo.getWordCount();
+            String s = wordInfo.getWord() + " " + wordInfo.getWordCount();
             joiner.add(s);
         }
         return joiner.toString();
