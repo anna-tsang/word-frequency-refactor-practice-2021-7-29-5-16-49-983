@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.StringJoiner;
 import java.util.stream.Collectors;
@@ -14,7 +13,7 @@ public class WordFrequencyGame {
     public String getResult(String inputWords) {
 
         try {
-            List<WordsInfo> inputWordsList = calculateWordFrequency(inputWords);
+            List<WordInfo> inputWordsList = calculateWordFrequency(inputWords);
             inputWordsList.sort((w1, w2) -> w2.getFrequency() - w1.getFrequency());
             return getString(inputWordsList);
         } catch (Exception e) {
@@ -22,19 +21,19 @@ public class WordFrequencyGame {
         }
     }
 
-    private List<WordsInfo> calculateWordFrequency(String sentences) {
+    private List<WordInfo> calculateWordFrequency(String sentences) {
         List<String> words = Arrays.asList(sentences.split(SPACE_PATTERN));
         List<String> distinctWords = words.stream().distinct().collect(Collectors.toList());
-        List<WordsInfo> wordInfos = new ArrayList<>();
+        List<WordInfo> wordInfos = new ArrayList<>();
         distinctWords.forEach(distinctWord -> {
             int frequency = (int) words.stream().filter(word -> word.equals((distinctWord))).count();
-            WordsInfo wordInfo = new WordsInfo(distinctWord, frequency);
+            WordInfo wordInfo = new WordInfo(distinctWord, frequency);
             wordInfos.add(wordInfo);
         });
         return wordInfos;
     }
 
-    private String getString(List<WordsInfo> wordInfoList) {
+    private String getString(List<WordInfo> wordInfoList) {
         StringJoiner joiner = new StringJoiner("\n");
         wordInfoList.forEach((wordInfo) -> {
             String resultString = wordInfo.getWord() + " " + wordInfo.getFrequency();
