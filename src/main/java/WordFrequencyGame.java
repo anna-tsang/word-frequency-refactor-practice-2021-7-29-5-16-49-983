@@ -9,16 +9,16 @@ import java.util.stream.Collectors;
 public class WordFrequencyGame {
 
     public static final String SPACE_PATTERN = "\\s+";
+    public static final String CALCULATE_ERROR = "Calculate Error";
 
     public String getResult(String inputWords) {
 
         try {
             List<WordsInfo> inputWordsList = calculateWordFrequency(inputWords);
             inputWordsList.sort((w1, w2) -> w2.getFrequency() - w1.getFrequency());
-            //inputWordsList.stream().sorted((Comparator.comparing(WordsInfo::getFrequency)));
             return getString(inputWordsList);
         } catch (Exception e) {
-            return "Calculate Error";
+            return CALCULATE_ERROR;
         }
     }
 
@@ -40,6 +40,7 @@ public class WordFrequencyGame {
             String s = wordInfo.getWord() + " " + wordInfo.getFrequency();
             joiner.add(s);
         }
+        //joiner = wordInfoList.stream().filter(wordinfo -> wordinfo.getWord())
         return joiner.toString();
     }
 
