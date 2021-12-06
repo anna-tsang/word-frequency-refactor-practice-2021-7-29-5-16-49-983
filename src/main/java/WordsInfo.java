@@ -2,9 +2,9 @@ public class WordsInfo {
     private String word;
     private int frequency;
 
-    public WordsInfo(String w, int i){
-        this.word =w;
-        this.frequency =i;
+    public WordsInfo(String word, int frequency){
+        this.word = word;
+        this.frequency = frequency;
     }
 
 
