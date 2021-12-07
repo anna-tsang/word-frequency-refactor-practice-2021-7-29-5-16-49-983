@@ -13,7 +13,7 @@ public class WordFrequencyGame {
     public String getResult(String inputWords) {
 
         try {
-            List<WordInfo> wordInfoList = calculateWordFrequency(inputWords);
+            List<WordInfo> wordInfoList = countWordFrequency(inputWords);
             wordInfoList.sort((wordInfo1, wordInfo2) -> wordInfo2.getFrequency() - wordInfo1.getFrequency());
             return generateString(wordInfoList);
         } catch (Exception e) {
@@ -21,7 +21,7 @@ public class WordFrequencyGame {
         }
     }
 
-    private List<WordInfo> calculateWordFrequency(String sentences) {
+    private List<WordInfo> countWordFrequency(String sentences) {
         List<String> words = Arrays.asList(sentences.split(SPACE_PATTERN));
         List<String> distinctWords = words.stream().distinct().collect(Collectors.toList());
         List<WordInfo> wordInfos = new ArrayList<>();
