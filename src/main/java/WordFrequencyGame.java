@@ -8,6 +8,7 @@ public class WordFrequencyGame {
 
     public static final String SPACE_PATTERN = "\\s+";
     public static final String CALCULATE_ERROR = "Calculate Error";
+    public static final String NEW_LINE = "\n";
 
     public String getResult(String inputWords) {
 
@@ -33,7 +34,7 @@ public class WordFrequencyGame {
     }
 
     private String generateString(List<WordInfo> wordInfoList) {
-        StringJoiner joiner = new StringJoiner("\n");
+        StringJoiner joiner = new StringJoiner(NEW_LINE);
         wordInfoList.forEach((wordInfo) -> {
             String resultString = String.format("%s %s",wordInfo.getWord(),wordInfo.getFrequency() );
             joiner.add(resultString);
