@@ -10,10 +10,10 @@ public class WordFrequencyGame {
     public static final String CALCULATE_ERROR = "Calculate Error";
     public static final String NEW_LINE = "\n";
 
-    public String getResult(String inputWords) {
+    public String getResult(String sentences) {
 
         try {
-            List<WordInfo> wordInfoList = countWordFrequency(inputWords);
+            List<WordInfo> wordInfoList = countWordFrequency(sentences);
             wordInfoList.sort((wordInfo1, wordInfo2) -> wordInfo2.getFrequency() - wordInfo1.getFrequency());
             return generateOutputString(wordInfoList);
         } catch (Exception e) {
